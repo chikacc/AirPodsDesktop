@@ -64,6 +64,8 @@ bool Initialize(bool enableTrace)
         );
         // clang-format on
 
+        int ix = 100;
+
         spdlog::register_logger(logger);
         spdlog::set_default_logger(logger);
 
