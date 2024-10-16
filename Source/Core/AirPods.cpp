@@ -467,7 +467,7 @@ void Manager::OnBoundDeviceConnectionStateChanged(Bluetooth::DeviceState state)
         _stateMgr.Disconnect();
     }
 
-    LOG(Info, "The device we bound is updated. current: {}, new: {}", _deviceConnected,
+    LOG(Info, "The device we bound is updated. state: {}, current: {}, new: {}", state, _deviceConnected,
         newDeviceConnected);
 }
 
