@@ -46,14 +46,17 @@ bool Advertisement::IsDesiredAdv(const Bluetooth::AdvertisementWatcher::Received
 {
     auto iter = data.manufacturerDataMap.find(AppleCP::VendorId);
     if (iter == data.manufacturerDataMap.end()) {
+        LOG(Info, "IsDesiredAdv false1");
         return false;
     }
 
     const auto &manufacturerData = (*iter).second;
     if (!AppleCP::AirPods::IsValid(manufacturerData)) {
+        LOG(Info, "IsDesiredAdv false2");
         return false;
     }
 
+    LOG(Info, "IsDesiredAdv true");
     return true;
 }
 

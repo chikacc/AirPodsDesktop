@@ -23,6 +23,7 @@ namespace Core::AppleCP {
 bool AirPods::IsValid(const std::vector<uint8_t> &data)
 {
     if (data.size() != sizeof(AirPods)) {
+        LOG(Info, "IsValid false1");
         return false;
     }
 
@@ -33,14 +34,17 @@ bool AirPods::IsValid(const std::vector<uint8_t> &data)
     if (packet->packetType != PacketType::ProximityPairing ||
         packet->remainingLength != shouldRemainingLength)
     {
+        LOG(Info, "IsValid false2");
         return false;
     }
 
+    LOG(Info, "IsValid true");
     return true;
 }
 
 Core::AirPods::Model AirPods::GetModel(uint16_t modelId)
 {
+    LOG(Info, "GetModel: {}", modelId);
     switch (modelId) {
     case 0x2002:
         return Core::AirPods::Model::AirPods_1;
