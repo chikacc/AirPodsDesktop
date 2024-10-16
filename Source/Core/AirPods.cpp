@@ -449,6 +449,8 @@ void Manager::OnBoundDeviceAddressChanged(uint64_t address)
     };
 
     OnBoundDeviceConnectionStateChanged(_boundDevice->GetConnectionState());
+
+    LOG(Info, "[OnBoundDeviceAddressChanged] bound _deviceName: {}", _boundDevice->GetName());
 }
 
 void Manager::OnBoundDeviceConnectionStateChanged(Bluetooth::DeviceState state)
@@ -458,6 +460,7 @@ void Manager::OnBoundDeviceConnectionStateChanged(Bluetooth::DeviceState state)
     _deviceConnected = newDeviceConnected;
 
     if (doDisconnect) {
+        LOG(Info, "[OnBoundDeviceConnectionStateChanged] doDisconnect");
         _stateMgr.Disconnect();
     }
 
